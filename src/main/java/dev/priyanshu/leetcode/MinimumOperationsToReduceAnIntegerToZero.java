@@ -11,7 +11,8 @@ public interface MinimumOperationsToReduceAnIntegerToZero {
   int minOperations(int n);
 }
 
-class RecursionSolution implements MinimumOperationsToReduceAnIntegerToZero {
+class MinimumOperationsToReduceAnIntegerToZeroImpl
+    implements MinimumOperationsToReduceAnIntegerToZero {
   private int solveState(int num) {
     if (num == 0) return 0;
     if (num == 1) return 1;
