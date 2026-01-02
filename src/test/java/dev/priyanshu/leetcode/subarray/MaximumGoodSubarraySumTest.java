@@ -1,4 +1,4 @@
-package dev.priyanshu.leetcode;
+package dev.priyanshu.leetcode.subarray;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;

@@ -1,4 +1,4 @@
-package dev.priyanshu.leetcode;
+package dev.priyanshu.leetcode.xor;
 
 import dev.priyanshu.leetcode.annotation.Category;
 import dev.priyanshu.leetcode.annotation.Leetcode;

@@ -1,4 +1,4 @@
-package dev.priyanshu.leetcode;
+package dev.priyanshu.leetcode.xor;
 
 import static dev.priyanshu.leetcode.enums.Difficulty.EASY;
 

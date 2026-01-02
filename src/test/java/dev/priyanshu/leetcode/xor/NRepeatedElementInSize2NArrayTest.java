@@ -1,4 +1,4 @@
-package dev.priyanshu.leetcode;
+package dev.priyanshu.leetcode.xor;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
@@ -8,20 +8,21 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class DecodeXORedPermutationTest {
+class NRepeatedElementInSize2NArrayTest {
 
   private Stream<Arguments> testCases() {
     return Stream.of(
-        Arguments.of(new int[] {3, 1}, new int[] {1, 2, 3}),
-        Arguments.of(new int[] {6, 5, 4, 6}, new int[] {2, 4, 1, 5, 3}));
+        Arguments.of(new int[] {1, 2, 3, 3}, 3),
+        Arguments.of(new int[] {2, 1, 2, 5, 3, 2}, 2),
+        Arguments.of(new int[] {5, 1, 5, 2, 5, 3, 5, 4}, 5));
   }
 
   @ParameterizedTest
   @MethodSource("testCases")
-  void decodeXORedPermutation(int[] encoded, int[] expected) {
-    var solver = new ResolveUsingXOR();
-    var actualArray = solver.decode(encoded);
+  void nRepeatedElementInSize2NArray(int[] nums, int expected) {
+    var solution = new MajorityInGroupOf3();
+    var actual = solution.repeatedNTimes(nums);
 
-    Assertions.assertArrayEquals(expected, actualArray);
+    Assertions.assertEquals(expected, actual);
   }
 }
