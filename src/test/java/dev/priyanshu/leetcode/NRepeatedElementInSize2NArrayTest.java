@@ -20,7 +20,7 @@ class NRepeatedElementInSize2NArrayTest {
   @ParameterizedTest
   @MethodSource("testCases")
   void nRepeatedElementInSize2NArray(int[] nums, int expected) {
-    var solution = new NRepeatedElementInSize2NArray();
+    var solution = new MajorityInGroupOf3();
     var actual = solution.repeatedNTimes(nums);
 
     Assertions.assertEquals(expected, actual);

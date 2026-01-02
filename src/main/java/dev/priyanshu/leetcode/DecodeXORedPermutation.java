@@ -7,7 +7,11 @@ import dev.priyanshu.leetcode.enums.Difficulty;
 
 @Leetcode(id = 1734, name = "decode-xored-permutation", difficulty = Difficulty.MEDIUM)
 @Category(concepts = {Concept.XOR_ALL, Concept.XOR_PERMUTATION_GROUP})
-public class DecodeXORedPermutation {
+public interface DecodeXORedPermutation {
+  int[] decode(int[] encoded);
+}
+
+class ResolveUsingXOR implements DecodeXORedPermutation {
   private int xorOfFirstN(int n) {
     int acc = 0;
     for (int i = 1; i <= n; i++) {

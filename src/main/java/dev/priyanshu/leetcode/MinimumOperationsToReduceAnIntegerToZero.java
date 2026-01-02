@@ -7,8 +7,11 @@ import dev.priyanshu.leetcode.enums.Difficulty;
     id = 2571,
     name = "minimum-operations-to-reduce-an-integer-to-0",
     difficulty = Difficulty.MEDIUM)
-public class MinimumOperationsToReduceAnIntegerToZero {
+public interface MinimumOperationsToReduceAnIntegerToZero {
+  int minOperations(int n);
+}
 
+class RecursionSolution implements MinimumOperationsToReduceAnIntegerToZero {
   private int solveState(int num) {
     if (num == 0) return 0;
     if (num == 1) return 1;

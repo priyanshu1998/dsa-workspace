@@ -2,10 +2,21 @@ package dev.priyanshu.leetcode;
 
 import static dev.priyanshu.leetcode.enums.Difficulty.EASY;
 
+import dev.priyanshu.leetcode.annotation.CornerCase;
+import dev.priyanshu.leetcode.annotation.Idea;
 import dev.priyanshu.leetcode.annotation.Leetcode;
 
 @Leetcode(id = 961, name = "n-repeated-element-in-size-2n-array", difficulty = EASY)
-public class NRepeatedElementInSize2NArray {
+public interface NRepeatedElementInSize2NArray {
+  int repeatedNTimes(int[] nums);
+}
+
+@Idea(
+    "Instead of maintaining the count, "
+        + "notice that there exist a window of 3, "
+        + "that always contain the majority")
+@CornerCase(scenario = "[1, 2, 3, 1]", solution = "n = 4, first and last elements are equal")
+class MajorityInGroupOf3 implements NRepeatedElementInSize2NArray {
   private int findMajority(int a, int b, int c) {
     if (a == b || a == c) {
       return a;

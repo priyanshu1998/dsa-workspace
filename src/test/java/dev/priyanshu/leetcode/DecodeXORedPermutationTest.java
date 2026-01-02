@@ -19,7 +19,7 @@ class DecodeXORedPermutationTest {
   @ParameterizedTest
   @MethodSource("testCases")
   void decodeXORedPermutation(int[] encoded, int[] expected) {
-    var solver = new DecodeXORedPermutation();
+    var solver = new ResolveUsingXOR();
     var actualArray = solver.decode(encoded);
 
     Assertions.assertArrayEquals(expected, actualArray);

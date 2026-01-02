@@ -25,7 +25,7 @@ class MinimumOperationsToReduceAnIntegerToZeroTest {
   @ParameterizedTest
   @MethodSource("testCases")
   void minimumOperationsToReduceAnIntegerToZero(int n, int expected) {
-    var solver = new MinimumOperationsToReduceAnIntegerToZero();
+    var solver = new RecursionSolution();
     Assertions.assertEquals(expected, solver.minOperations(n));
   }
 }
