@@ -16,7 +16,7 @@ class MaximumGoodSubarraySumImpl implements MaximumGoodSubarraySum {
   public long maximumSubarraySum(int[] a, int k) {
     Map<Integer, Long> prefixSum = new HashMap<>();
 
-    long ans = -99999999900001L;
+    long ans = -999_999_999_000_01L;
 
     long sum = 0;
     for (int aj : a) {
