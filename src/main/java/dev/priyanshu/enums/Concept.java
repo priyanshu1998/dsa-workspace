@@ -1,4 +1,4 @@
-package dev.priyanshu.leetcode.enums;
+package dev.priyanshu.enums;
 
 public enum Concept {
   XOR_ALL,

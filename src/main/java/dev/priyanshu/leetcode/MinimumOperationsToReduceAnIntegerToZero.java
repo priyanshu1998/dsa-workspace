@@ -1,12 +1,8 @@
 package dev.priyanshu.leetcode;
 
-import dev.priyanshu.leetcode.annotation.Leetcode;
-import dev.priyanshu.leetcode.enums.Difficulty;
+import dev.priyanshu.annotation.Leetcode;
 
-@Leetcode(
-    id = 2571,
-    name = "minimum-operations-to-reduce-an-integer-to-0",
-    difficulty = Difficulty.MEDIUM)
+@Leetcode(id = 2571, name = "minimum-operations-to-reduce-an-integer-to-0")
 public interface MinimumOperationsToReduceAnIntegerToZero {
   int minOperations(int n);
 }

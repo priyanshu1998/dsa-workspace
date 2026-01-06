@@ -1,12 +1,10 @@
 package dev.priyanshu.leetcode.xor;
 
-import static dev.priyanshu.leetcode.enums.Difficulty.EASY;
+import dev.priyanshu.annotation.CornerCase;
+import dev.priyanshu.annotation.Idea;
+import dev.priyanshu.annotation.Leetcode;
 
-import dev.priyanshu.leetcode.annotation.CornerCase;
-import dev.priyanshu.leetcode.annotation.Idea;
-import dev.priyanshu.leetcode.annotation.Leetcode;
-
-@Leetcode(id = 961, name = "n-repeated-element-in-size-2n-array", difficulty = EASY)
+@Leetcode(id = 961, name = "n-repeated-element-in-size-2n-array")
 public interface NRepeatedElementInSize2NArray {
   int repeatedNTimes(int[] nums);
 }

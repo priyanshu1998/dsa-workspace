@@ -1,11 +1,10 @@
 package dev.priyanshu.leetcode.xor;
 
-import dev.priyanshu.leetcode.annotation.Category;
-import dev.priyanshu.leetcode.annotation.Leetcode;
-import dev.priyanshu.leetcode.enums.Concept;
-import dev.priyanshu.leetcode.enums.Difficulty;
+import dev.priyanshu.annotation.Category;
+import dev.priyanshu.annotation.Leetcode;
+import dev.priyanshu.enums.Concept;
 
-@Leetcode(id = 1734, name = "decode-xored-permutation", difficulty = Difficulty.MEDIUM)
+@Leetcode(id = 1734, name = "decode-xored-permutation")
 @Category(concepts = {Concept.XOR_ALL, Concept.XOR_PERMUTATION_GROUP})
 public interface DecodeXORedPermutation {
   int[] decode(int[] encoded);

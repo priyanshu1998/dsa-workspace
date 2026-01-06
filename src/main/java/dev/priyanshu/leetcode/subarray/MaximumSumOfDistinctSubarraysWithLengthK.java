@@ -1,8 +1,10 @@
 package dev.priyanshu.leetcode.subarray;
 
+import dev.priyanshu.annotation.Leetcode;
 import java.util.HashSet;
 import java.util.Set;
 
+@Leetcode(id = 2461, name = "maximum-sum-of-distinct-subarrays-with-length-k")
 public interface MaximumSumOfDistinctSubarraysWithLengthK {
   long maximumSubarraySum(int[] a, int k);
 }
@@ -46,9 +48,7 @@ class MaximumSumOfDistinctSubarraysWithLengthKImpl
     setArr(a);
 
     while (l - k < n && r < n) {
-      int ar = a[r];
-
-      while (flag.contains(ar) || r - l >= k) {
+      while (flag.contains(a[r]) || r - l >= k) {
         incrementL();
       }
       incrementR();
