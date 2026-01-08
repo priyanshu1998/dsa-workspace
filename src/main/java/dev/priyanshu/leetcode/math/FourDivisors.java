@@ -1,6 +1,5 @@
 package dev.priyanshu.leetcode.math;
 
-import dev.priyanshu.annotation.Category;
 import dev.priyanshu.annotation.Leetcode;
 
 @Leetcode(id = 1390, name = "four-divisors")

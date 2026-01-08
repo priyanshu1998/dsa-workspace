@@ -4,5 +4,5 @@ import dev.priyanshu.annotation.Leetcode;
 
 @Leetcode()
 public interface StoneGame7 {
-    int stoneGameVII(int[] stones);
+  int stoneGameVII(int[] stones);
 }
