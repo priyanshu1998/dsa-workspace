@@ -1,7 +1,10 @@
 package dev.priyanshu.leetcode.backtracking.tree;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Queue;
+import java.util.function.Supplier;
 
 public class TreeNode {
   int val;
@@ -44,5 +47,28 @@ public class TreeNode {
       i++;
     }
     return root;
+  }
+
+  int[] preorderTraversal() {
+    var root = this;
+    var supplier =
+        new Supplier<int[]>() {
+          final List<Integer> preorder = new ArrayList<>();
+
+          @Override
+          public int[] get() {
+            dfs(root);
+            return preorder.stream().mapToInt(Integer::intValue).toArray();
+          }
+
+          void dfs(TreeNode root) {
+            if (root == null) return;
+            preorder.add(root.val);
+            dfs(root.left);
+            dfs(root.right);
+          }
+        };
+
+    return supplier.get();
   }
 }

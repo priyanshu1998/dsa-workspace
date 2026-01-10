@@ -1,5 +1,7 @@
 package dev.priyanshu.leetcode.backtracking.tree;
 
+import java.util.function.Supplier;
+
 public interface MaximumProductOfSplittedBinaryTree {
   int maxProduct(TreeNode root);
 }
@@ -7,32 +9,44 @@ public interface MaximumProductOfSplittedBinaryTree {
 class MaximumProductOfSplittedBinaryTreeImpl implements MaximumProductOfSplittedBinaryTree {
 
   private static final long M = 1000_000_007;
-  private int sum = 0;
 
-  private TreeNode sumTree(TreeNode root) {
-    if (root == null) return null;
-    var leftNode = sumTree(root.left);
-    var rightNode = sumTree(root.right);
+  private Supplier<Integer> sum(TreeNode node) {
+    return new Supplier<Integer>() {
+      Integer sum = null;
 
-    int sum = root.val;
-    sum += (leftNode != null) ? leftNode.val : 0;
-    sum += (rightNode != null) ? rightNode.val : 0;
+      @Override
+      public Integer get() {
+        if (sum != null) return sum;
+        return this.sum = sum(node);
+      }
 
-    return new TreeNode(sum, leftNode, rightNode);
+      int sum(TreeNode node) {
+        if (node == null) return 0;
+
+        return node.val + sum(node.left) + sum(node.right);
+      }
+    };
   }
 
-  private int product(TreeNode root) {
-    if (root == null) return 0;
-    int product = Math.toIntExact((long) (sum - root.val) * root.val);
-    int childTreeMaxProduct = Math.max(product(root.left), product(root.right));
-    //        System.out.printf("%s %s\n", root.val, product);
-    return Math.max(product, childTreeMaxProduct);
+  Supplier<Integer> treeSum;
+
+  record Result(int product, int subTreeSum) {}
+
+  private Result dfs(TreeNode root) {
+    if (root == null) return new Result(0, 0);
+
+    var leftResult = dfs(root.left);
+    var rightResult = dfs(root.right);
+
+    int sum = root.val + leftResult.subTreeSum + rightResult.subTreeSum;
+    int product =
+        Math.max((treeSum.get() - sum) * sum, Math.max(leftResult.product, rightResult.product));
+    return new Result(product, sum);
   }
 
   @Override
   public int maxProduct(TreeNode root) {
-    TreeNode sumTreeRoot = sumTree(root);
-    sum = sumTreeRoot.val;
-    return Math.toIntExact(product(sumTreeRoot) % M);
+    treeSum = sum(root);
+    return Math.toIntExact(dfs(root).product % M);
   }
 }
