@@ -1,4 +1,4 @@
-package dev.priyanshu.leetcode.sequence;
+package dev.priyanshu.leetcode.sequence.monotonic;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;

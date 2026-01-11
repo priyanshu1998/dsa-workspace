@@ -1,4 +1,4 @@
-package dev.priyanshu.leetcode.sequence;
+package dev.priyanshu.leetcode.sequence.monotonic;
 
 import dev.priyanshu.annotation.Leetcode;
 import java.util.ArrayList;
