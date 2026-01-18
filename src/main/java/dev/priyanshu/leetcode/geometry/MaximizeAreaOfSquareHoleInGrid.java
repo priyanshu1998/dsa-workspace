@@ -1,4 +1,4 @@
-package dev.priyanshu.leetcode.search.binary;
+package dev.priyanshu.leetcode.geometry;
 
 import dev.priyanshu.annotation.Leetcode;
 import java.util.Arrays;

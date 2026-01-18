@@ -1,6 +1,7 @@
-package dev.priyanshu.leetcode.search.binary;
+package dev.priyanshu.leetcode.geometry;
 
 import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
