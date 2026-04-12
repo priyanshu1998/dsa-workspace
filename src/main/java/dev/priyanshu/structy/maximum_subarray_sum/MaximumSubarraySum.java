@@ -1,4 +1,4 @@
-package dev.priyanshu.structy;
+package dev.priyanshu.structy.maximum_subarray_sum;
 
 public interface MaximumSubarraySum {
     long maximumSubarraySum(int[] nums, int k);
