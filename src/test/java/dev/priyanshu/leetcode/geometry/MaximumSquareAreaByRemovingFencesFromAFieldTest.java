@@ -2,7 +2,6 @@ package dev.priyanshu.leetcode.geometry;
 
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.Timeout;
@@ -315,7 +314,6 @@ class MaximumSquareAreaByRemovingFencesFromAFieldTest {
   @ParameterizedTest
   @MethodSource("testCases")
   @Timeout(value = 1, unit = TimeUnit.SECONDS)
-
   void test(int m, int n, int[] hFences, int[] vFences, int expected) {
     var solver = new MaximumSquareAreaByRemovingFencesFromAFieldImpl();
     Assertions.assertEquals(expected, solver.maximizeSquareArea(m, n, hFences, vFences));
