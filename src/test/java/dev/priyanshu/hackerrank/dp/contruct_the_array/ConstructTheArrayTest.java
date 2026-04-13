@@ -1,6 +1,5 @@
-package dev.priyanshu.hackerrank.dp;
+package dev.priyanshu.hackerrank.dp.contruct_the_array;
 
-import dev.priyanshu.hackerrank.dp.contruct_the_array.Result;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.TestInstance;
