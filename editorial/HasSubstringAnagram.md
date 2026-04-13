@@ -253,6 +253,89 @@ Each slide does a **fixed O(1)** update (at most 2 map lookups and 2 mismatches 
 
 ---
 
+### 4. MostOptimizedSolution (Fixed-size Array + Unified Pass) — O(n) Time, O(1) Space
+
+**Key Insight:** Every solution so far uses `HashMap<Character, Integer>`, which pays for:
+- **Autoboxing** — `char` → `Character` and `int` → `Integer` on every read/write
+- **Hashing overhead** — `hashCode()` + collision handling per access
+- **Heap allocations** — each `Integer` box is a separate object
+
+Since all characters are **lowercase English letters**, the entire frequency map fits in a fixed `int[26]` array. Array access by index (`c - 'a'`) is a single CPU instruction — no boxing, no hashing, no heap allocation. The 26-element array is a compile-time constant, so space becomes **O(1)**.
+
+A secondary cleanup: `OptimizedSolution` calls `compareAnagram()` for the first window (which internally builds *two extra* HashMaps), and then builds *yet another* HashMap for the sliding part. All of that collapses into a single unified setup loop.
+
+```java
+class MostOptimizedSolution implements HasSubstringAnagram {
+
+    @Override
+    public boolean hasSubstringAnagram(String s, String anagram) {
+        int k = anagram.length();
+        if (k > s.length()) return false;
+
+        int[] anagramFreq = new int[26];
+        int[] windowFreq  = new int[26];
+
+        // Build both frequency arrays in one unified pass
+        for (int i = 0; i < k; i++) {
+            anagramFreq[anagram.charAt(i) - 'a']++;
+            windowFreq[s.charAt(i) - 'a']++;
+        }
+
+        // Count mismatches for the initial window
+        int mismatches = 0;
+        for (int i = 0; i < 26; i++)
+            if (anagramFreq[i] != windowFreq[i]) mismatches++;
+
+        if (mismatches == 0) return true;
+
+        // Slide the window — each step is O(1) with no allocations
+        for (int r = k; r < s.length(); r++) {
+            int addIdx = s.charAt(r)     - 'a';   // character entering
+            int popIdx = s.charAt(r - k) - 'a';   // character leaving
+
+            // Update mismatches BEFORE changing the frequency so comparisons
+            // reflect the current (pre-update) state.
+
+            // --- incoming character ---
+            if      (windowFreq[addIdx] == anagramFreq[addIdx])     mismatches++; // was matching → now over
+            else if (windowFreq[addIdx] == anagramFreq[addIdx] - 1) mismatches--; // was 1 short  → now matching
+            windowFreq[addIdx]++;
+
+            // --- outgoing character ---
+            if      (windowFreq[popIdx] == anagramFreq[popIdx])     mismatches++; // was matching → now under
+            else if (windowFreq[popIdx] == anagramFreq[popIdx] + 1) mismatches--; // was 1 over   → now matching
+            windowFreq[popIdx]--;
+
+            if (mismatches == 0) return true;
+        }
+
+        return false;
+    }
+}
+```
+
+**Why updating mismatches BEFORE the frequency matters:**
+
+The mismatch logic asks "is this character currently at the exact boundary between matching and mismatching?" We need to check the count *before* the increment/decrement so the boundary comparison is correct:
+
+```
+windowFreq[addIdx] == anagramFreq[addIdx]      →  currently matching, +1 makes it over  → mismatch created
+windowFreq[addIdx] == anagramFreq[addIdx] - 1  →  currently 1 short,  +1 makes it exact → mismatch resolved
+(all other cases: the count is already mismatching and moving further away, or over by 2+)
+```
+
+The same logic applies symmetrically for the outgoing character.
+
+**What about adding and removing the same character in one step?**
+
+If `addIdx == popIdx` (e.g., window slides over a repeated character of the same type), the net change to `windowFreq` is zero. The mismatch adjustments also cancel out correctly — the incremented frequency used for the pop check already accounts for the add, and the two boundary checks produce equal and opposite adjustments. ✓
+
+**Complexity:**
+- Time: **O(n)** — O(k) init + O(26) mismatch seed + O(1) per slide
+- Space: **O(1)** — two fixed 26-element arrays (constant, independent of input size)
+
+---
+
 ## Optimization Journey
 
 ```
@@ -272,17 +355,26 @@ CompareOptimized ─────────────────────
            ▼  Observation: consecutive windows share k-1 characters —
               only 1 character leaves and 1 enters on each slide
 
-Sliding Window + Mismatch Counter ──────────────────────────────────────────►
+OptimizedSolution ───────────────────────────────────────────────────────────►
        Maintain the window's frequency map incrementally. Track only a single
        integer (mismatches) that summarises whether the window is an anagram.
        Each slide: O(1) update to the map and the counter.
-       Time: O(n)   Space: O(k)   ← Best possible
+       Time: O(n)   Space: O(k)  — but HashMap has autoboxing + hashing overhead
+
+           ▼  Observation: alphabet is fixed (26 letters) — HashMap is overkill.
+              Replace Map<Character,Integer> with int[26] for O(1) indexed access.
+              Also unify the redundant first-window setup into a single pass.
+
+MostOptimizedSolution ───────────────────────────────────────────────────────►
+       Two int[26] arrays instead of HashMaps. No autoboxing, no hashing,
+       no heap allocation per access. Single unified setup loop.
+       Time: O(n)   Space: O(1)   ← Optimal in both dimensions
 ```
 
 ### Step-by-step derivation
 
-| Window | Naive / CompareOptimized | OptimizedSolution |
-|--------|--------------------------|-------------------|
+| Window | Naive / CompareOptimized | OptimizedSolution / MostOptimizedSolution |
+|--------|--------------------------|-------------------------------------------|
 | `s[0..k-1]` | Build full freq map (O(k)) | Build full freq map once (O(k)) |
 | `s[1..k]`   | Rebuild full map (O(k)) | Remove `s[0]`, add `s[k]` (O(1)) |
 | `s[2..k+1]` | Rebuild full map (O(k)) | Remove `s[1]`, add `s[k+1]` (O(1)) |
@@ -334,7 +426,8 @@ No more slides.  RETURN FALSE
 |----------|------|-------|----------|
 | Naive | O(n·k) | O(k) | Rebuild both freq maps per window |
 | CompareOptimized | O(n·k) | O(k) | Build anagram map once; early exit on mismatch |
-| Sliding Window | **O(n)** | O(k) | O(1) incremental map update + mismatch counter |
+| OptimizedSolution | O(n) | O(k) | O(1) incremental HashMap update + mismatch counter |
+| MostOptimizedSolution | **O(n)** | **O(1)** | Fixed `int[26]` arrays — no boxing, no hashing |
 
-> **Best solution:** `OptimizedSolution` — linear time by incrementally maintaining the frequency map and a single mismatch counter across slides.
+> **Best solution:** `MostOptimizedSolution` — linear time and **true O(1) space** by replacing `HashMap<Character, Integer>` with a fixed-size `int[26]` array, exploiting the known 26-character alphabet.
 

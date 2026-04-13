@@ -49,6 +49,54 @@ class NaiveSolution implements HasSubstringAnagram{
     }
 }
 
+class MostOptimizedSolution implements HasSubstringAnagram {
+
+    @Override
+    public boolean hasSubstringAnagram(String s, String anagram) {
+        int k = anagram.length();
+        if (k > s.length()) return false;
+
+        int[] anagramFreq = new int[26];
+        int[] windowFreq  = new int[26];
+
+        // Build frequency maps for anagram and first window in one unified pass
+        for (int i = 0; i < k; i++) {
+            anagramFreq[anagram.charAt(i) - 'a']++;
+            windowFreq[s.charAt(i) - 'a']++;
+        }
+
+        // Count mismatches for the initial window
+        int mismatches = 0;
+        for (int i = 0; i < 26; i++)
+            if (anagramFreq[i] != windowFreq[i]) mismatches++;
+
+        if (mismatches == 0) return true;
+
+        // Slide the window: each step is O(1)
+        for (int r = k; r < s.length(); r++) {
+            int addIdx = s.charAt(r)     - 'a';   // character entering
+            int popIdx = s.charAt(r - k) - 'a';   // character leaving
+
+            // Update mismatches BEFORE changing the frequency, so comparisons
+            // reflect the current (pre-update) state.
+
+            // --- incoming character ---
+            if      (windowFreq[addIdx] == anagramFreq[addIdx])     mismatches++; // was matching → now over
+            else if (windowFreq[addIdx] == anagramFreq[addIdx] - 1) mismatches--; // was 1 short  → now matching
+            windowFreq[addIdx]++;
+
+            // --- outgoing character ---
+            if      (windowFreq[popIdx] == anagramFreq[popIdx])     mismatches++; // was matching → now under
+            else if (windowFreq[popIdx] == anagramFreq[popIdx] + 1) mismatches--; // was 1 over   → now matching
+            windowFreq[popIdx]--;
+
+            if (mismatches == 0) return true;
+        }
+
+        return false;
+    }
+}
+
 class CompareOptimized implements HasSubstringAnagram {
 
     Map<Character, Integer> freq = new HashMap<>();

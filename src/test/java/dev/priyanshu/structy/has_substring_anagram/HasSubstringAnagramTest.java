@@ -36,4 +36,11 @@ class HasSubstringAnagramTest {
         var solver = new NaiveSolution();
         assertFalse(solver.hasSubstringAnagram("gruyheonds", "hoy"));
     }
+
+    @ParameterizedTest
+    @MethodSource("testCases")
+    void testMostOptimized(String s, String anagram, boolean expected){
+        var solver = new MostOptimizedSolution();
+        assertEquals(expected, solver.hasSubstringAnagram(s, anagram));
+    }
 }
