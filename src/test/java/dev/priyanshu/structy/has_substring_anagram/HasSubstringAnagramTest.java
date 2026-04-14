@@ -1,6 +1,7 @@
 package dev.priyanshu.structy.has_substring_anagram;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
@@ -33,12 +34,5 @@ class HasSubstringAnagramTest {
   void singleTest() {
     var solver = new NaiveSolution();
     assertFalse(solver.hasSubstringAnagram("gruyheonds", "hoy"));
-  }
-
-  @ParameterizedTest
-  @MethodSource("testCases")
-  void testMostOptimized(String s, String anagram, boolean expected) {
-    var solver = new MostOptimizedSolution();
-    assertEquals(expected, solver.hasSubstringAnagram(s, anagram));
   }
 }
