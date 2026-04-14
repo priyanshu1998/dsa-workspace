@@ -68,28 +68,19 @@ class WindowOptimized implements FindSubarraySum {
 
     @Override
     public int[] findSubarraySum(int[] nums, long target) {
-        long sum = nums[0];
-
+        long sum = 0;
         int l = 0;
-        int r = 1;
+        int r = 0;
 
-        while(r<nums.length){
-            if(sum == target){
-                var w = new Window(l, r-1);
-                return FindSubarraySum.getIndexes(w);
-            }else if(sum > target){
-                sum -= nums[l];
-                l += 1;
-                continue;
-            }
-
+        while(r < nums.length) {
             sum += nums[r];
-            r+=1;
-        }
-
-        if(sum == target) {
-            var w = new Window(l, r - 1);
-            return FindSubarraySum.getIndexes(w);
+            while (sum > target) {
+                sum -= nums[l++];
+            }
+            if (sum == target) {
+                return FindSubarraySum.getIndexes(new Window(l, r));
+            }
+            r++;
         }
 
         return new int[]{-1, -1};
