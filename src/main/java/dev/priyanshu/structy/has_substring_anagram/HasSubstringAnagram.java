@@ -1,8 +1,11 @@
 package dev.priyanshu.structy.has_substring_anagram;
 
+import dev.priyanshu.annotation.Structy;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Structy(tag="sliding-window")
 public interface HasSubstringAnagram {
   boolean hasSubstringAnagram(String s, String anagram);
 }

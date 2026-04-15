@@ -1,7 +1,10 @@
 package dev.priyanshu.structy.longest_unique_substring;
 
+import dev.priyanshu.annotation.Structy;
+
 import java.util.HashSet;
 
+@Structy(tag="sliding-window")
 public interface LongestUniqueSubstring {
   int longestUniqueSubstring(String s);
 }

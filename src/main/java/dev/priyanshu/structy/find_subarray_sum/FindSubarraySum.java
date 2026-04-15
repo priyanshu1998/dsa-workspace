@@ -1,5 +1,8 @@
 package dev.priyanshu.structy.find_subarray_sum;
 
+import dev.priyanshu.annotation.Structy;
+
+@Structy(tag="sliding-window")
 public interface FindSubarraySum {
   record Window(int l, int r) {}
   ;

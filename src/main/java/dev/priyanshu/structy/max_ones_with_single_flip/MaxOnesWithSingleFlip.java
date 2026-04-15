@@ -1,5 +1,8 @@
 package dev.priyanshu.structy.max_ones_with_single_flip;
 
+import dev.priyanshu.annotation.Structy;
+
+@Structy(tag="sliding-window")
 public interface MaxOnesWithSingleFlip {
   int maxOnesWithSingleFlip(String s);
 }

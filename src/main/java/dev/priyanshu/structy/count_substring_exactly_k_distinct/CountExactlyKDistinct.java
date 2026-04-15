@@ -1,8 +1,11 @@
 package dev.priyanshu.structy.count_substring_exactly_k_distinct;
 
+import dev.priyanshu.annotation.Structy;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Structy(tag="sliding-window")
 public interface CountExactlyKDistinct {
   long countSubstringExactlyKDistinct(String s, int k);
 }

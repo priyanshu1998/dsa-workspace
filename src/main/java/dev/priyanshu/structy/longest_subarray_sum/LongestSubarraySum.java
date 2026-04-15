@@ -1,5 +1,8 @@
 package dev.priyanshu.structy.longest_subarray_sum;
 
+import dev.priyanshu.annotation.Structy;
+
+@Structy(tag="sliding-window")
 public interface LongestSubarraySum {
   int longestSubarraySum(int[] nums, long target);
 }
