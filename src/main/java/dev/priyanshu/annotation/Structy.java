@@ -4,8 +4,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.SOURCE)
-
 public @interface Structy {
-    String value() default "";
-    String[] tag() default {};
+  String value() default "";
+
+  String[] tag() default {};
 }

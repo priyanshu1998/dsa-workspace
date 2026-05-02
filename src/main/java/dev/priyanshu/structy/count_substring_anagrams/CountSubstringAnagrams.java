@@ -2,7 +2,7 @@ package dev.priyanshu.structy.count_substring_anagrams;
 
 import dev.priyanshu.annotation.Structy;
 
-@Structy(tag="sliding-window")
+@Structy(tag = "sliding-window")
 public interface CountSubstringAnagrams {
   int countSubstringAnagrams(String s, String anagram);
 }

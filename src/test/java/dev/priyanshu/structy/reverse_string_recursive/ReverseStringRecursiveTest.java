@@ -1,4 +1,4 @@
-package dev.priyanshu.codeforces;
+package dev.priyanshu.structy.reverse_string_recursive;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,16 +9,20 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class SegmentWithBigSumTest {
+class ReverseStringRecursiveTest {
 
   Stream<Arguments> testCases() {
-    return Stream.of(Arguments.of(7, new long[] {2, 6, 4, 3, 6, 8, 9}, 20, 3));
+    return Stream.of(
+        Arguments.of("hello", "olleh"),
+        Arguments.of("abcdefg", "gfedcba"),
+        Arguments.of("stopwatch", "hctawpots"),
+        Arguments.of("", ""));
   }
 
   @ParameterizedTest
   @MethodSource("testCases")
-  void test(int n, long[] nums, long target, int expected) {
-    var solver = new SegmentWithBigSumImpl();
-    assertEquals(expected, solver.shortestGoodSegment(n, nums, target));
+  void test(String s, String expected) {
+    var solver = new ReverseStringTailRecursion();
+    assertEquals(expected, solver.reverseString(s));
   }
 }

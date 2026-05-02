@@ -2,7 +2,7 @@ package dev.priyanshu.structy.maximum_subarray_product;
 
 import dev.priyanshu.annotation.Structy;
 
-@Structy(tag="sliding-window")
+@Structy(tag = "sliding-window")
 public interface MaximumSubarrayProduct {
   long maximumSubarrayProduct(long[] nums, int k);
 }

@@ -1,11 +1,10 @@
 package dev.priyanshu.structy.count_substring_at_most_k_distinct;
 
 import dev.priyanshu.annotation.Structy;
-
 import java.util.HashMap;
 import java.util.Map;
 
-@Structy(tag="sliding-window")
+@Structy(tag = "sliding-window")
 public interface CountSubstringAtMostKDistinct {
   long countSubstringAtMostKDistinct(String s, int k);
 }

@@ -2,7 +2,7 @@ package dev.priyanshu.structy.subarray_target_sum_size_k;
 
 import dev.priyanshu.annotation.Structy;
 
-@Structy(tag="sliding-window")
+@Structy(tag = "sliding-window")
 public interface SubarrayTargetSumSizeK {
   int subarrayTargetSumSizeK(int[] nums, long target, int k);
 }

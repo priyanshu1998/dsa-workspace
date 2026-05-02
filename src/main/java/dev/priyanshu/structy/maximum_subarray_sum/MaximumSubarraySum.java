@@ -2,7 +2,7 @@ package dev.priyanshu.structy.maximum_subarray_sum;
 
 import dev.priyanshu.annotation.Structy;
 
-@Structy(tag="sliding-window")
+@Structy(tag = "sliding-window")
 public interface MaximumSubarraySum {
   long maximumSubarraySum(int[] nums, int k);
 }

@@ -2,7 +2,7 @@ package dev.priyanshu.structy.count_subarray_product;
 
 import dev.priyanshu.annotation.Structy;
 
-@Structy(tag="sliding-window")
+@Structy(tag = "sliding-window")
 public interface CountSubarrayProduct {
   long countSubarrayProduct(int[] nums, long target);
 }

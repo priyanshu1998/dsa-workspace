@@ -1,12 +1,11 @@
 package dev.priyanshu.structy.longest_two_char_substring;
 
 import dev.priyanshu.annotation.Structy;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-@Structy(tag="sliding-window")
+@Structy(tag = "sliding-window")
 public interface LongestTwoCharacterSubstring {
   int longestTwoCharSubstring(String s);
 }
