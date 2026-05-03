@@ -5,19 +5,22 @@ public interface Uncompress {
 }
 
 class UncompressImpl implements Uncompress {
-  record Window(int l, int r) {}
+
+    public static final char NULL = '\0';
+
+    record Window(int l, int r) {}
 
   private boolean isDigit(Character c) {
-    return (c != '\0' && Character.isDigit(c));
+    return (c != NULL && Character.isDigit(c));
   }
 
   private boolean isAlphabetic(Character c) {
-    return (c != '\0' && Character.isAlphabetic(c));
+    return (c != NULL && Character.isAlphabetic(c));
   }
 
   private Character charAt(int i) {
     if (i == s.length()) {
-      return '\0';
+      return NULL;
     }
     return s.charAt(i);
   }
