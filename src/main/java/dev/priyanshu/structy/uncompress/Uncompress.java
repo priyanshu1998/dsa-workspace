@@ -6,9 +6,9 @@ public interface Uncompress {
 
 class UncompressImpl implements Uncompress {
 
-    public static final char NULL = '\0';
+  public static final char NULL = '\0';
 
-    record Window(int l, int r) {}
+  record Window(int l, int r) {}
 
   private boolean isDigit(Character c) {
     return (c != NULL && Character.isDigit(c));
