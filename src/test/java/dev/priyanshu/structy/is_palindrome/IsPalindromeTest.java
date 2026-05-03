@@ -1,15 +1,14 @@
-package dev.priyanshu.structy.palindrome_recursive;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+package dev.priyanshu.structy.is_palindrome;
 
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class PalindromeRecursiveTest {
+class IsPalindromeTest {
 
   Stream<Arguments> testCases() {
     return Stream.of(
@@ -25,7 +24,7 @@ class PalindromeRecursiveTest {
   @ParameterizedTest
   @MethodSource("testCases")
   void test(String s, boolean expected) {
-    var solver = new PalindromeTailRecursiveImpl();
-    assertEquals(expected, solver.isPalindrome(s));
+    var solver = new IsPalindromeImpl();
+    Assertions.assertEquals(expected, solver.isPalindrome(s));
   }
 }
