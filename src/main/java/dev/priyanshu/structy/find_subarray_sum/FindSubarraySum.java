@@ -4,14 +4,13 @@ import dev.priyanshu.annotation.Structy;
 
 @Structy(tag = "sliding-window")
 public interface FindSubarraySum {
-  record Window(int l, int r) {}
-  ;
+  record Window(int l, int r) {
+    int[] getIndexes() {
+      return new int[] {this.l, this.r};
+    }
+  }
 
   int[] findSubarraySum(int[] nums, long target);
-
-  static int[] getIndexes(Window w) {
-    return new int[] {w.l, w.r};
-  }
 }
 
 class NaiveSolution implements FindSubarraySum {
@@ -26,7 +25,7 @@ class NaiveSolution implements FindSubarraySum {
         }
         if (sum == target) {
           var w = new Window(i, j - 1);
-          return FindSubarraySum.getIndexes(w);
+          return w.getIndexes();
         } else if (sum > target) {
           break;
         }
@@ -53,7 +52,7 @@ class SumOptimized implements FindSubarraySum {
 
         if (sum == target) {
           var w = new Window(i, j - 1);
-          return FindSubarraySum.getIndexes(w);
+          return w.getIndexes();
         } else if (sum > target) {
           break;
         }
@@ -78,7 +77,8 @@ class WindowOptimized implements FindSubarraySum {
         sum -= nums[l++];
       }
       if (sum == target) {
-        return FindSubarraySum.getIndexes(new Window(l, r));
+        var w = new Window(l, r);
+        return w.getIndexes();
       }
       r++;
     }
