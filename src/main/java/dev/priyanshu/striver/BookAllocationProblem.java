@@ -22,12 +22,12 @@ class BookAllocationProblemImpl implements BookAllocationProblem {
         return tot;
     }
 
-    private boolean check(int[] nums, int m, int pages) {
+    private boolean isAMaximumPageCount(int[] nums, int m, int maxPages) {
         int students = 1;
         int runningSum = 0;
 
         for (int num : nums) {
-            if (runningSum + num > pages) {
+            if (runningSum + num > maxPages) {
                 students++;
                 runningSum = num;
             } else {
@@ -49,7 +49,7 @@ class BookAllocationProblemImpl implements BookAllocationProblem {
 
         while(l<r){
             int mid = l + (r-l)/2;
-            if(check(nums, m, mid)){
+            if(isAMaximumPageCount(nums, m, mid)){
                 r = mid;
             }else{
                 l = mid + 1;

@@ -8,7 +8,7 @@ public interface AggressiveCows {
 
 class AggressiveCowsImpl implements AggressiveCows {
 
-    private boolean canBePlaced(int[] nums, int k, int dist){
+    private boolean isAMinimumDistance(int[] nums, int k, int dist){
         int i = 0;
         int j = 1;
         int count = 1;
@@ -37,7 +37,7 @@ class AggressiveCowsImpl implements AggressiveCows {
             int mid = l + (r-l+1)/2;
             System.out.printf("%d %d %d\n", l, mid, r);
 
-            if(canBePlaced(nums, k, mid)){
+            if(isAMinimumDistance(nums, k, mid)){
                 l = mid;
             }else{
                 r = mid-1;
