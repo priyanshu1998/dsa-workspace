@@ -165,6 +165,42 @@ computer for `y` minutes, which is always physically realizable since
 battery at other instants), yields a valid simultaneous `n`-computer,
 `t`-minute schedule. Hence `S(t) ≥ n · t` is sufficient. ∎
 
+> **Plain-language recap of the analogy.** When we say the feasibility
+> check reduces to "bin covering with items no larger than the bin
+> capacity," we are drawing an analogy to a classic packing puzzle. Here
+> is how every piece of that analogy maps directly to our
+> computer-and-battery problem:
+>
+> 1. **What are the "bins"?** Bins = the computers (`n` computers). Each
+>    computer needs to run continuously for `t` minutes, so each computer
+>    represents a bin of exact capacity `t` that must be filled with `t`
+>    minutes of total battery charge.
+> 2. **What are the "items"?** Items = the battery charge contributions
+>    (`min(batteries[i], t)`). Because a battery can only power one
+>    computer at a time and our observation window is `t` minutes long, no
+>    single battery can contribute more than `t` minutes of charge, so each
+>    battery's usable contribution is capped at `t`. "Items no larger than
+>    the bin capacity" means every battery's capped contribution (`≤ t`) is
+>    smaller than or equal to the target bin size (`t`) — no battery is
+>    larger than the computer's required running duration.
+> 3. **What does "bin covering" mean here?** In computer science, bin
+>    *packing* usually means packing items into the fewest bins without
+>    overflowing them. Bin *covering*, on the other hand, means packing
+>    items into bins so that every bin is filled to **at least** a target
+>    threshold (in our case, exactly `t` minutes per computer).
+> 4. **Why does it "always succeed greedily when the total item size is
+>    enough"?** Because every battery's size is `≤ t` (never larger than an
+>    empty bin), a simple greedy algorithm works: take batteries one by
+>    one and pour their charge into Computer 1's bin until it hits `t`
+>    minutes; the moment Computer 1's bin is full, cap it, open Computer
+>    2's bin, and pour the leftover charge of that same battery into
+>    Computer 2. Because no battery is larger than `t`, a battery never
+>    spans more than two computers. As long as the total available supply
+>    (`Σ min(batteries[i], t)`) is at least the total demand (`n · t`),
+>    this greedy pouring process is guaranteed to fill all `n` computer
+>    bins to exactly `t` minutes without running out of charge or breaking
+>    any physical rules.
+
 ### Lemma 2 (Monotone threshold structure of `check`)
 
 Define `h(t) = S(t) - n · t` for `t ≥ 0`. There exists a threshold
