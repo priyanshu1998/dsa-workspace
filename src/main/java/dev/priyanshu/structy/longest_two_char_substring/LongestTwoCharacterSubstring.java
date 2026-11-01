@@ -68,7 +68,7 @@ class IntermediateOptimization implements LongestTwoCharacterSubstring {
 
 class OptimizedSolution implements LongestTwoCharacterSubstring {
 
-  private void put(Map<Character, Integer> map, char c) {
+  private void add(Map<Character, Integer> map, char c) {
     map.put(c, map.getOrDefault(c, 0) + 1);
   }
 
@@ -85,21 +85,21 @@ class OptimizedSolution implements LongestTwoCharacterSubstring {
     var map = new HashMap<Character, Integer>();
 
     int l = 0;
-    int r = 0;
 
-    while (r < s.length()) {
-      put(map, s.charAt(r));
+    for (int r=0; r < s.length(); r++) {
+      // add leading element
+      add(map, s.charAt(r));
 
+      // remove trailing elements while constraint is violated
       while (map.size() > 2) {
         remove(map, s.charAt(l));
         l++;
       }
 
+      // update ans
       if (map.size() == 2) {
         maxLength = Math.max(maxLength, r - l + 1);
       }
-
-      r++;
     }
 
     return maxLength;

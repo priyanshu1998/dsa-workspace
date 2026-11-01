@@ -1,7 +1,10 @@
 package dev.priyanshu.structy.longest_unique_substring;
 
 import dev.priyanshu.annotation.Structy;
+
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 @Structy(tag = "sliding-window")
 public interface LongestUniqueSubstring {
@@ -39,23 +42,40 @@ class NaiveSolution implements LongestUniqueSubstring {
 
 class OptimizedSolution implements LongestUniqueSubstring {
 
+  private void add(Map<Character, Integer> freq, Character c){
+    freq.put(c, freq.getOrDefault(c, 0)+1);
+  }
+
+  private void remove(Map<Character, Integer> freq, Character c){
+    var v = freq.get(c);
+
+    if(v == 1){
+      freq.remove(c);
+    }else{
+      freq.put(c, v-1);
+    }
+  }
+
+
   @Override
   public int longestUniqueSubstring(String s) {
     int maxLength = 0;
+    Map<Character, Integer> freq = new HashMap<>();
 
     int l = 0;
-    int r = 0;
 
-    var set = new HashSet<Character>();
-    while (r < s.length()) {
+    for(int r=0; r < s.length(); r++) {
+      // add leading element
+      add(freq, s.charAt(r));
 
-      while (set.contains(s.charAt(r))) {
-        set.remove(s.charAt(l));
+      // remove trailing elements while constraint is violated
+      while (freq.get(s.charAt(r)) > 1) {
+        remove(freq, s.charAt(l));
         l++;
       }
-      set.add(s.charAt(r));
-      maxLength = Math.max(maxLength, set.size());
-      r++;
+
+
+      maxLength = Math.max(maxLength, r-l+1);
     }
 
     return maxLength;

@@ -40,6 +40,9 @@ class NaiveSolution implements MaxOnesWithSingleFlip {
 
 class OptimizedSolution implements MaxOnesWithSingleFlip {
 
+  int l = 0;
+  int r = 0;
+
   int count0 = 0;
   int count1 = 0;
 
@@ -49,6 +52,7 @@ class OptimizedSolution implements MaxOnesWithSingleFlip {
     } else {
       count1++;
     }
+    r++;
   }
 
   void removeTrailingBit(char c) {
@@ -57,25 +61,24 @@ class OptimizedSolution implements MaxOnesWithSingleFlip {
     } else {
       count1--;
     }
+    l++;
   }
 
   @Override
   public int maxOnesWithSingleFlip(String s) {
     int maxLength = 0;
 
-    int l = 0;
-    int r = 0;
-
     while (r < s.length()) {
+      // add leading element
       addLeadingBit(s.charAt(r));
 
+      // fix window
       while (count0 == 2) {
         removeTrailingBit(s.charAt(l));
-        l++;
       }
 
-      maxLength = Math.max(maxLength, r - l + 1);
-      r++;
+      // window is now valid, check if that's the largest window
+      maxLength = Math.max(maxLength, r - l);
     }
 
     return maxLength;

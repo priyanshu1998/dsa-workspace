@@ -47,7 +47,7 @@ class MaximumSumOfDistinctSubarraysWithLengthKImpl
     int n = a.length;
     setArr(a);
 
-    while (l - k < n && r < n) {
+    while (r < n) {
       while (flag.contains(a[r]) || r - l >= k) {
         incrementL();
       }
