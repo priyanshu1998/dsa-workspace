@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="600" viewBox="0 0 1240 600" font-family="&#39;Segoe UI&#39;, Arial, sans-serif" role="img" aria-label="&#39;a&#39; joins, 0 would need replacing">
+<defs>
+<filter id="rp-soft" x="-12%" y="-14%" width="124%" height="140%"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#0F172A" flood-opacity="0.10"/></filter>
+</defs>
+<rect x="0" y="0" width="1240" height="600" fill="#FFFFFF"/>
+<text x="620" y="44" text-anchor="middle" font-size="27" font-weight="600" fill="#111827">'a' joins, 0 would need replacing</text>
+<text x="620" y="76" text-anchor="middle" font-size="19" fill="#475569">legal while the window length minus its highest letter count fits the budget</text>
+<rect x="40" y="100" width="1160" height="240" rx="14" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.5"/>
+<text x="60" y="130" font-size="19.5" font-weight="600" fill="#475569">the string "aabccbb", budget 2</text>
+<rect x="256" y="142" width="92" height="56" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.5"/>
+<text x="302" y="177.525" text-anchor="middle" font-size="21.5" font-weight="600" fill="#111827">a</text>
+<text x="302" y="220" text-anchor="middle" font-size="15.5" fill="#94A3B8">0</text>
+<rect x="362" y="142" width="92" height="56" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="408" y="177.525" text-anchor="middle" font-size="21.5" font-weight="600" fill="#94A3B8">a</text>
+<text x="408" y="220" text-anchor="middle" font-size="15.5" fill="#94A3B8">1</text>
+<rect x="468" y="142" width="92" height="56" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="514" y="177.525" text-anchor="middle" font-size="21.5" font-weight="600" fill="#94A3B8">b</text>
+<text x="514" y="220" text-anchor="middle" font-size="15.5" fill="#94A3B8">2</text>
+<rect x="574" y="142" width="92" height="56" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="620" y="177.525" text-anchor="middle" font-size="21.5" font-weight="600" fill="#94A3B8">c</text>
+<text x="620" y="220" text-anchor="middle" font-size="15.5" fill="#94A3B8">3</text>
+<rect x="680" y="142" width="92" height="56" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="726" y="177.525" text-anchor="middle" font-size="21.5" font-weight="600" fill="#94A3B8">c</text>
+<text x="726" y="220" text-anchor="middle" font-size="15.5" fill="#94A3B8">4</text>
+<rect x="786" y="142" width="92" height="56" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="832" y="177.525" text-anchor="middle" font-size="21.5" font-weight="600" fill="#94A3B8">b</text>
+<text x="832" y="220" text-anchor="middle" font-size="15.5" fill="#94A3B8">5</text>
+<rect x="892" y="142" width="92" height="56" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="938" y="177.525" text-anchor="middle" font-size="21.5" font-weight="600" fill="#94A3B8">b</text>
+<text x="938" y="220" text-anchor="middle" font-size="15.5" fill="#94A3B8">6</text>
+<path d="M293,308 L311,308 L302,294 Z" fill="#D97706"/>
+<text x="302" y="332" text-anchor="middle" font-size="18.5" font-weight="600" fill="#B45309">start</text>
+<rect x="40" y="360" width="1160" height="124" rx="14" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.5"/>
+<text x="60" y="390" font-size="19.5" font-weight="600" fill="#475569">the most common letter, and how many would be replaced</text>
+<rect x="110" y="408" width="320" height="52" rx="10" fill="#EDE9FE" stroke="#C4B5FD" stroke-width="2"/>
+<text x="270" y="440.84" text-anchor="middle" font-size="19" font-weight="600" fill="#5B21B6">most common count = 1</text>
+<rect x="460" y="408" width="320" height="52" rx="10" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="2"/>
+<text x="620" y="440.84" text-anchor="middle" font-size="19" font-weight="600" fill="#047857">would replace 0 of 2</text>
+<rect x="40" y="500" width="1160" height="84" rx="14" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="620" y="540" text-anchor="middle" font-size="21.5" font-weight="600" fill="#047857">new longest: 1</text>
+<text x="620" y="572" text-anchor="middle" font-size="18.5" fill="#475569">1 long, 1 of them are the most common letter</text>
+</svg>

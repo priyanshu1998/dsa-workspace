@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="600" viewBox="0 0 1240 600" font-family="&#39;Segoe UI&#39;, Arial, sans-serif" role="img" aria-label="Sum 8 reaches 7, length 3">
+<defs>
+<filter id="ss-soft" x="-12%" y="-14%" width="124%" height="140%"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#0F172A" flood-opacity="0.10"/></filter>
+</defs>
+<rect x="0" y="0" width="1240" height="600" fill="#FFFFFF"/>
+<text x="620" y="44" text-anchor="middle" font-size="27" font-weight="600" fill="#111827">Sum 8 reaches 7, length 3</text>
+<text x="620" y="76" text-anchor="middle" font-size="19" fill="#475569">grow while the sum is short, shrink while it still reaches the target</text>
+<rect x="40" y="100" width="1160" height="240" rx="14" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.5"/>
+<text x="60" y="130" font-size="19.5" font-weight="600" fill="#475569">the array, target 7</text>
+<rect x="309" y="142" width="92" height="56" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="355" y="177.525" text-anchor="middle" font-size="21.5" font-weight="600" fill="#94A3B8">2</text>
+<text x="355" y="220" text-anchor="middle" font-size="15.5" fill="#94A3B8">0</text>
+<rect x="415" y="142" width="92" height="56" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.5"/>
+<text x="461" y="177.525" text-anchor="middle" font-size="21.5" font-weight="600" fill="#111827">1</text>
+<text x="461" y="220" text-anchor="middle" font-size="15.5" fill="#94A3B8">1</text>
+<rect x="521" y="142" width="92" height="56" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.5"/>
+<text x="567" y="177.525" text-anchor="middle" font-size="21.5" font-weight="600" fill="#111827">5</text>
+<text x="567" y="220" text-anchor="middle" font-size="15.5" fill="#94A3B8">2</text>
+<rect x="627" y="142" width="92" height="56" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1.5"/>
+<text x="673" y="177.525" text-anchor="middle" font-size="21.5" font-weight="600" fill="#111827">2</text>
+<text x="673" y="220" text-anchor="middle" font-size="15.5" fill="#94A3B8">3</text>
+<rect x="733" y="142" width="92" height="56" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="779" y="177.525" text-anchor="middle" font-size="21.5" font-weight="600" fill="#94A3B8">3</text>
+<text x="779" y="220" text-anchor="middle" font-size="15.5" fill="#94A3B8">4</text>
+<rect x="839" y="142" width="92" height="56" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.5"/>
+<text x="885" y="177.525" text-anchor="middle" font-size="21.5" font-weight="600" fill="#94A3B8">2</text>
+<text x="885" y="220" text-anchor="middle" font-size="15.5" fill="#94A3B8">5</text>
+<path d="M452,308 L470,308 L461,294 Z" fill="#D97706"/>
+<text x="461" y="332" text-anchor="middle" font-size="18.5" font-weight="600" fill="#B45309">start</text>
+<path d="M664,308 L682,308 L673,294 Z" fill="#7C3AED"/>
+<text x="673" y="332" text-anchor="middle" font-size="18.5" font-weight="600" fill="#5B21B6">end</text>
+<rect x="40" y="360" width="1160" height="124" rx="14" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.5"/>
+<text x="60" y="390" font-size="19.5" font-weight="600" fill="#475569">the window sum and the shortest length found</text>
+<rect x="110" y="408" width="320" height="52" rx="10" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="2"/>
+<text x="270" y="440.84" text-anchor="middle" font-size="19" font-weight="600" fill="#047857">window sum = 8</text>
+<rect x="460" y="408" width="320" height="52" rx="10" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="2"/>
+<text x="620" y="440.84" text-anchor="middle" font-size="19" font-weight="600" fill="#047857">shortest so far = 3</text>
+<rect x="40" y="500" width="1160" height="84" rx="14" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="620" y="540" text-anchor="middle" font-size="21.5" font-weight="600" fill="#1D4ED8">still 3</text>
+<text x="620" y="572" text-anchor="middle" font-size="18.5" fill="#475569">1 can now leave, because the sum may still reach the target without it</text>
+</svg>
